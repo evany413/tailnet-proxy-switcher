@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Tailnet Proxy</title>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <header class="header">
+        <div>
+          <p class="eyebrow">TAILNET PROXY</p>
+          <h1>Chrome exit node</h1>
+        </div>
+        <div class="status-pill" id="statusPill">
+          <span class="status-dot"></span>
+          <span id="statusText">Loading</span>
+        </div>
+      </header>
+
+      <section class="card">
+        <label for="nodeSelect">Connection</label>
+        <select id="nodeSelect" disabled>
+          <option value="direct">Direct | No proxy</option>
+        </select>
+
+        <div class="node-detail" id="nodeDetail">Use the current network connection</div>
+
+        <button class="primary-button" id="connectButton" type="button" disabled>
+          Apply connection
+        </button>
+
+        <div class="secondary-actions">
+          <button class="text-button" id="toggleAddButton" type="button">
+            + Add host
+          </button>
+          <button class="text-button danger" id="deleteButton" type="button" hidden>
+            Delete selected host
+          </button>
+        </div>
+      </section>
+
+      <form class="card add-form" id="addForm" hidden>
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">NEW HOST</p>
+            <h2>Add a Tailscale node</h2>
+          </div>
+          <button class="close-button" id="closeAddButton" type="button" aria-label="Close">
+            ×
+          </button>
+        </div>
+
+        <label for="nameInput">Display name</label>
+        <input id="nameInput" name="name" maxlength="40" placeholder="For example: Home NAS" required />
+
+        <label for="hostInput">Device name or IP address</label>
+        <input
+          id="hostInput"
+          name="host"
+          spellcheck="false"
+          autocomplete="off"
+          placeholder="my-tailnet-proxy or 100.64.x.x"
+          required
+        />
+        <p class="field-help">You can use a Tailscale device name when MagicDNS is enabled.</p>
+
+        <label for="portInput">SOCKS5 port</label>
+        <input id="portInput" name="port" type="number" min="1" max="65535" value="1080" required />
+
+        <button class="primary-button" type="submit">Save host</button>
+      </form>
+
+      <p class="message" id="message" role="status" aria-live="polite"></p>
+      <footer>SOCKS5 over Tailscale · Chrome profile scope</footer>
+    </main>
+
+    <script src="popup.js"></script>
+  </body>
+</html>

@@ -1,0 +1,18 @@
+{
+  "manifest_version": 3,
+  "name": "Tailnet Proxy Switcher",
+  "version": "0.1.0",
+  "description": "Switch Chrome between direct access and saved SOCKS5 proxies over Tailscale.",
+  "permissions": [
+    "privacy",
+    "proxy",
+    "storage"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_title": "Tailnet Proxy Switcher",
+    "default_popup": "popup.html"
+  }
+}
