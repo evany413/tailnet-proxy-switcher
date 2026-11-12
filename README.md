@@ -108,4 +108,4 @@ The extension requests:
 
 ## License
 
-No license has been selected yet.
+Licensed under the [MIT License](LICENSE).
